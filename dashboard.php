@@ -26,5 +26,6 @@
             <li><a href="history.php">History</a></li>
         </ul>
     </nav>
+    <b><i>Some text</i></b>
 </body>
 </html>
