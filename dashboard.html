@@ -22,7 +22,7 @@
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body class="dashboard">
     <nav>
         <div class="logo">
             <img src="image/logo.png" alt="Logo" />
