@@ -48,3 +48,144 @@ nav ul li a.active {
   color: #fdc600;
   font-weight: bold;
 }
+
+/* Report */
+
+#report header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+#report .back-button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+#report .back-button img {
+  width: 1.2rem;
+}
+
+#report .back-button p {
+  margin: 0 0 0 0.5rem;
+  color: #fdc600;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#report .report-date {
+  margin: 0;
+  color: #080708;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#report .report-content {
+  margin: 0.5rem 2rem 2rem 2rem;
+  padding: 0;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  border: solid 8px #fdc600;
+  position: fixed;
+}
+
+#report .report-content h1 {
+  font-size: 2.5rem;
+  position: absolute;
+  translate: -50% -50%;
+  left: 50%;
+  color: #080708;
+  background-color: #faf9f8;
+  margin: 0;
+  padding: 0 1.5rem 0.5rem 1.5rem;
+}
+
+#report .report-content-inside {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  margin: 2rem 1rem 1rem 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+#report .building {
+  position: relative;
+  width: 45%;
+}
+
+#report hr {
+  height: 4px;
+  background-color: #fdc600;
+  border: none;
+}
+
+#report .building-name {
+  width: fit-content;
+  color: #080708;
+  background-color: #faf9f8;
+  margin: 0;
+  padding: 0 1rem 0 0;
+  position: absolute;
+  top: -0.2%;
+}
+
+#report table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  color: #080708;
+  position: relative;
+}
+
+#report thead,
+#report tfoot {
+  background-color: #fdc600;
+}
+
+#report thead th {
+  padding: 0.8rem;
+}
+
+#report tbody {
+  overflow-y: auto;
+  display: block;
+  padding-right: 2px;
+}
+
+#report tbody::-webkit-scrollbar {
+  width: 5px;
+}
+
+#report tbody::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 5px;
+}
+
+#report thead,
+#report tfoot,
+#report tbody tr {
+  display: table;
+  table-layout: fixed;
+}
+
+#report tbody tr:nth-child(odd) {
+  background-color: #faf9f8;
+}
+
+#report tbody tr:nth-child(even) {
+  background-color: #d9d9d9;
+}
+
+#report tbody td {
+  padding: 0.3rem 0.8rem;
+}
+
+#report tbody tr td:last-child {
+  text-align: end;
+}
+
+#report tfoot th {
+  padding: 0.4rem 0.8rem;
+}
