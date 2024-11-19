@@ -5,6 +5,10 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Montserrat", sans-serif;
+  background-image: url("image/background.png");
+  background-position: 70rem 1rem;
+  background-repeat: no-repeat;
+  background-size: 15rem 43rem;
 }
 
 nav {
@@ -47,6 +51,81 @@ nav ul li a {
 nav ul li a.active {
   color: #fdc600;
   font-weight: bold;
+}
+
+.container1 {
+  display: flex;
+  justify-content: flex-start; /* Menyusun elemen dari kiri ke kanan */
+  align-items: flex-start;
+  margin: 0.5rem;
+  padding-bottom: 2.5rem;
+}
+.chart-container1 {
+  width: 100%;
+  max-width: 40rem; /* Lebar maksimum grafik dalam rem (1rem = 16px secara default) */
+  margin: 0 auto; /* Pusatkan grafik */
+  height: 20rem; /* Tinggi grafik dalam rem */
+  margin-top: 0.7rem;
+}
+h1 {
+  transform: translateX(35%);
+  font-weight: bold; /* Menebalkan teks */
+}
+.form-container1 {
+  width: 5rem; /* Lebar form */
+  margin: 10rem; /* Pusatkan form di halaman */
+  flex-direction: column; /* Susunan vertikal */
+  font-size: 1rem;
+  margin-bottom: 0rem;
+}
+.form-container1 input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  text-align: right;
+}
+#building1 {
+  background-color: #0b5cf2; /* Warna biru */
+}
+
+#building2 {
+  background-color: #ff0408; /* Warna merah */
+}
+
+#total {
+  background-color: #fdc600; /* Warna kuning */
+}
+#submit {
+  background-color: #fdc600;
+}
+.container3 {
+  border-style: solid;
+  padding-top: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-color: #fdc600;
+  margin: 2rem;
+  position: relative;
+}
+.form-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
+}
+
+.form-input select,
+.form-input input {
+  margin-top: 0.2rem;
+  padding: 0.7rem;
+  border-color: #fdc600;
+  border-radius: 0.5rem;
+}
+h3.report {
+  position: absolute;
+  top: -2rem;
+  right: 38rem;
+  background-color: white;
 }
 
 /* Report */
