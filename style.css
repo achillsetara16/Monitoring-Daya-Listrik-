@@ -5,7 +5,9 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Montserrat", sans-serif;
-  background-image: url('image/background_logo.png'); 
+}
+#dashboard .dashboard{
+  background-image: url('image/background.png'); 
   background-position: 70rem 1rem;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -52,25 +54,25 @@ nav ul li a.active {
   font-weight: bold;
 }
 
-.container1 {
+#dashboard .container1 {
   display: flex;
   justify-content: flex-start; 
   align-items: flex-start;
   margin: 0.5rem;
   padding-bottom: 2.5rem;
 }
-.chart-container1 {
+#dashboard .chart-container1 {
   width: 100%;
   max-width: 40rem; 
   margin: 0 auto;
   height: 20rem; 
   margin-top: 0.7rem;
 }
-h1 {
+#dashboard h1 {
   transform: translateX(35%);
   font-weight: bold; 
 }
-.form-container1 {
+#dashboard .form-container1 {
   width: 5rem; /* Lebar form */
   margin: 10rem; /* Pusatkan form di halaman */
   flex-direction: column; /* Susunan vertikal */
@@ -81,7 +83,7 @@ h1 {
   font-size:1rem;
   margin-bottom: 0rem;
 }
-.form-container1 input {
+#dashboard .form-container1 input {
   width: 100%;
   padding: 0.7rem;
   border-radius: 0.5rem;
@@ -89,24 +91,21 @@ h1 {
   margin-bottom: 0.8rem;
   text-align: right;
 }
-#building1 {
+#dashboard #building1 {
   background-color: #0b5cf2; /* Warna biru */
-  background-color:#0B5CF2; 
 }
 
-#building2 {
+#dashboard #building2 {
   background-color: #ff0408; /* Warna merah */
-  background-color:#FF0408; 
 }
 
-#total {
+#dashboard #total {
   background-color: #fdc600; /* Warna kuning */
-  background-color:#FDC600;
 }
-#submit {
+#dashboard #submit {
   background-color: #fdc600;
 }
-.container3 {
+#dashboard .container3 {
   border-style: solid;
   padding-top: 1.2rem;
   padding-bottom: 0.6rem;
@@ -114,7 +113,7 @@ h1 {
   margin: 2rem;
   position: relative;
 }
-.form-container {
+#dashboard .form-container {
   display: flex;
   justify-content: space-evenly;
   align-items: end;
@@ -127,7 +126,7 @@ h1 {
   border-color: #fdc600;
   border-radius: 0.5rem;
 }
-h3.report {
+#dashboard h3.report {
   position: absolute;
   top: -2rem;
   right: 38rem;
