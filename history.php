@@ -14,7 +14,7 @@
     <link href="style.css" rel="stylesheet">
     <title>History</title>
 </head>
-<body>
+<body id="history">
     <nav>
         <div class="logo">
             <img src="image/logo.png" alt="Logo" />

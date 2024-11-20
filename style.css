@@ -275,7 +275,9 @@ h3.report {
   padding: 0.4rem 0.8rem;
 }
 
-.garis {
+ /* history */
+
+#history .garis {
   border: none;
   border-top: 8px solid #fdc600;
   margin-top: 50px;
@@ -283,7 +285,7 @@ h3.report {
   width: 100%;
 }
 
-.history {
+#history .history {
   position: absolute;
   top: 70px;
   right: 500px;
@@ -295,88 +297,89 @@ h3.report {
   translate: -50px;
 }
 
-.history p{
+#history .history p{
   margin: 0 20px;
   font-size: 24px;
   font-weight: bold;
   color: black;
 }
 
-.table-container {
+#history .table-container {
   position: fixed;
   background-color: rgba(247, 244, 243, 0.5);
   padding: 30px;
+  width: 100%;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.table-controls {
+#history .table-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.entries-per-page {
+#history .entries-per-page {
   display: flex;
   align-items: center;
 }
 
-.entries-per-page label {
+#history .entries-per-page label {
   margin-right: 8px;
 }
 
-.search-box {
+#history .search-box {
   display: flex;
   align-items: center;
 }
 
-.search-box label {
+#history .search-box label {
   margin-right: 8px;
 }
 
-#entries, #search {
+#history #entries, #search {
   padding: 5px;
   border-radius: 4px;
   border: 1px solid black;
 }
 
-table {
+#history table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
 
-thead {
+#history thead {
   background-color: #FFC107;
 }
 
-thead th {
+#history thead th {
   padding: 10px;
   color: black;
   text-align: center;
 }
 
-tbody td {
+#history tbody td {
   padding: 10px;
   border-bottom: 1px solid #EEE;
   text-align: center;
 }
 
-tr:nth-child(even){background-color: #e6e6e6}
+#history tr:nth-child(even){background-color: #e6e6e6}
 
-.pagination {
+#history .pagination {
   margin-top: 10px;
   text-align: right;
 }
 
-.pagination a {
+#history .pagination a {
   margin: 0 5px;
   color: #333;
   text-decoration: none;
 }
 
-.pagination a:hover {
+#history .pagination a:hover {
   background-color: #e0e0e0;
   color: #555;
   border: 1px solid black;
@@ -384,7 +387,7 @@ tr:nth-child(even){background-color: #e6e6e6}
   padding: 4px 10px;
 }
 
-.pagination .active {
+#history .pagination .active {
   background-color: #e6e6e6;
   color: black;
   border: 1px solid black;
@@ -392,7 +395,7 @@ tr:nth-child(even){background-color: #e6e6e6}
   padding: 4px 10px;
 }
 
-.pagination-control {
+#history .pagination-control {
   display: flex;
   justify-content: space-between;
   align-items: center;
