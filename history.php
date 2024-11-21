@@ -15,17 +15,7 @@
     <title>History</title>
 </head>
 <body id="history">
-    <nav>
-        <div class="logo">
-            <img src="image/logo.png" alt="Logo" />
-            <p>POWER MONITORING</p>
-        </div>
-        <ul>
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="control.php">Control</a></li>
-            <li><a class="active" href="history.php">History</a></li>
-        </ul>
-    </nav>
+    <?php require 'navbar.php'; ?>
     
     <div class="garis"></div>
     <div class="history">
