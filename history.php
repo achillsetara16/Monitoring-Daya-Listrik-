@@ -2,6 +2,7 @@
 <!-- Deskripsi: File ini menampilkan riwayat pemakaian daya secara rinci -->
 <!-- Dibuat oleh: Elvan - NIM: 3312311004 -->
 <!-- Tanggal: 12 November 2024 -->
+<?php require 'connect_mysql.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,35 +50,29 @@
         <tbody>
                     <?php
                     
-                    $data = [
-                        ["Building 2", "Area 2", "Button", "Switch", "2024-09-04 08:00:36", "2024-09-04 17:00:47", "1 kW"],
-                        ["Building 1", "Area 1", "Button", "Switch", "2024-09-04 08:00:32", "2024-09-04 17:00:45", "1 kW"],
-                        ["Building 2", "Area 2", "Button", "Sound", "2024-09-04 08:00:05", "2024-09-04 17:00:04", "1 kW"],
-                        ["Building 1", "Area 1", "Button", "Switch", "2024-09-04 08:00:02", "2024-09-04 17:00:04", "1 kW"],
-                        ["Building 2", "Area 2", "Switch", "Switch", "2024-09-02 08:00:15", "2024-09-03 17:00:11", "1 kW"],
-                        ["Building 1", "Area 1", "Switch", "Sound", "2024-09-03 08:00:42", "2024-09-03 17:00:09", "1 kW"],
-                        ["Building 2", "Area 2", "Sound", "Switch", "2024-09-03 08:00:03", "2024-09-03 17:00:06", "1 kW"],
-                        ["Building 1", "Area 1", "Sound", "Switch", "2024-09-03 08:00:03", "2024-09-03 17:00:04", "1 kW"],
-                        ["Building 2", "Area 2", "Button", "Sound", "2024-09-02 08:00:31", "2024-09-02 17:00:56", "1 kW"],
-                        ["Building 1", "Area 1", "Button", "Switch", "2024-09-02 08:00:23", "2024-09-02 17:00:56", "1 kW"],
-                        ["Building 2", "Area 2", "Switch", "Switch", "2024-09-02 08:00:15", "2024-09-02 17:00:04", "1 kW"],
-                        ["Building 1", "Area 1", "Switch", "Sound", "2024-09-02 08:00:12", "2024-09-02 17:00:04", "1 kW"],
-                        
-                    ];
-                    
-                    $no = 1;
-                    foreach ($data as $row) {
-                        echo "<tr>";
-                        echo "<td>{$no}</td>";
-                        echo "<td>{$row[0]}</td>";
-                        echo "<td>{$row[1]}</td>";
-                        echo "<td>{$row[2]}</td>";
-                        echo "<td>{$row[3]}</td>";
-                        echo "<td>{$row[4]}</td>";
-                        echo "<td>{$row[5]}</td>";
-                        echo "<td>{$row[6]}</td>";
-                        echo "</tr>";
-                        $no++;
+                    if (isset($connect)) {
+                        $sql = "SELECT * FROM history";
+                        $result = mysqli_query($connect, $sql);
+    
+                        if (mysqli_num_rows($result) > 0) {
+                            $no = 1;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>" . $no++ . "</td>";
+                                echo "<td>" . htmlspecialchars($row['building']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['area']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['control_on']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['control_off']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['start_time']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['finish_time']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['power_consumed']) . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='8'>No data found.</td></tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='8'>Failed to connect to database.</td></tr>";
                     }
                     ?>
                 </tbody>
