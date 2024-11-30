@@ -13,6 +13,8 @@
 <!-- Dibuat oleh: Masruri - NIM: 3312311110 -->
 <!-- Tanggal: 17 November 2024 -->
 
+<?php require 'connect_mysql.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +43,14 @@
     <div class="container3">
         <h3 class="report">REPORT</h3>
     <form action="report.php" method="POST">
+        <?php
+
+        $sql = "SELECT start_time FROM history ORDER BY start_time LIMIT 1";
+        $result = mysqli_query($connect, $sql);
+        $data = mysqli_fetch_assoc($result);
+        $start_date = date("Y-m-d", strtotime($data["start_time"]));
+
+        ?>
         <div class="form-container">
             <div class="form-input">
                 <label for="building">Building</label><br>
@@ -53,11 +63,11 @@
             </div>
             <div class="form-input">
                 <label for="date_start">From</label><br>
-                <input type="date" name="date_start" id="date_start" required>
+                <input type="date" name="date_start" id="date_start" min="<?= $start_date ?>" max="<?= date("Y-m-d", strtotime("-1 day")) ?>" required>
             </div>
             <div class="form-input">
                 <label for="date_end">Until</label><br>
-                <input type="date" name="date_end" id="date_end" required>
+                <input type="date" name="date_end" id="date_end" min="<?= $start_date ?>" max="<?= date("Y-m-d", strtotime("-1 day")) ?>" required>
             </div>
             <div class="form-input">
                 <input type="submit" id="submit" value="View Report">
