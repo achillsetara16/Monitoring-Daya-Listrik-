@@ -32,10 +32,10 @@
     </div>
     <div class="form-container1">
         <label for="area1">AREA 1</label>
-        <input type="text" id="area_gedung2" readonly />
+        <input type="text" id="area1" readonly />
     
         <label for="area2">AREA 2</label>
-        <input type="text" id="area_gedung1" readonly />
+        <input type="text" id="area2" readonly />
     
         <label for="total">Total</label>
         <input type="text" id="total" readonly />
