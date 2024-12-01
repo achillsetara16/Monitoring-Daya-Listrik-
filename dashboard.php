@@ -19,8 +19,9 @@
     <?php require 'metadata.php'; ?>
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="style.css" rel="stylesheet">
 </head>
-<body class="dashboard">
+<body id="dashboard">
     <?php require 'navbar.php'; ?>
     <div class="container1">
     <div class="chart-container1">
@@ -28,11 +29,11 @@
         <canvas id="powerChart"></canvas>
     </div>
     <div class="form-container1">
-        <label for="building1">Building 1</label>
-        <input type="text" id="building1" readonly />
+        <label for="area1">AREA 1</label>
+        <input type="text" id="area_gedung2" readonly />
     
-        <label for="building2">Building 2</label>
-        <input type="text" id="building2" readonly />
+        <label for="area2">AREA 2</label>
+        <input type="text" id="area_gedung1" readonly />
     
         <label for="total">Total</label>
         <input type="text" id="total" readonly />
@@ -43,12 +44,12 @@
     <form action="report.php" method="POST">
         <div class="form-container">
             <div class="form-input">
-                <label for="building">Building</label><br>
-                <select name="building" id="building" required>
+                <label for="area">AREA</label><br>
+                <select name="area" id="area" required>
                     <option value="0">Choose...</option>
-                    <option value="all">All Building</option>
-                    <option value="1">Building 1</option>
-                    <option value="2">Building 2</option>
+                    <option value="all">All AREA</option>
+                    <option value="1">AREA 1</option>
+                    <option value="2">AREA 2</option>
                 </select>
             </div>
             <div class="form-input">
@@ -74,13 +75,13 @@
                 labels: [],
                 datasets: [
                     {
-                        label: 'Building 1 (Watt)',
+                        label: 'AREA 1 (Watt)',
                         borderColor: '#0B5CF2',
                         backgroundColor: '#0B5CF2',
                         data: []
                     },
                     {
-                        label: 'Building 2 (Watt)',
+                        label: 'AREA 2 (Watt)',
                         borderColor: '#FF0408',
                         backgroundColor: '#FF0408',
                         data: []
@@ -122,21 +123,21 @@
         .then(response => response.json())
         .then(data => {
             const labels = data.history.map(entry => entry.time);
-            const building1Data = data.history.map(entry => entry.building1);
-            const building2Data = data.history.map(entry => entry.building2);
+            const area1Data = data.history.map(entry => entry.area1);
+            const area2Data = data.history.map(entry => entry.area2);
 
             // Update chart dengan data terbaru
             powerChart.data.labels = labels;
-            powerChart.data.datasets[0].data = building1Data;
-            powerChart.data.datasets[1].data = building2Data;
+            powerChart.data.datasets[0].data = area1Data;
+            powerChart.data.datasets[1].data = area2Data;
             powerChart.update();
 
             // Panggil updateInputs dengan data terbaru dari grafik
-            const latestBuilding1 = building1Data[building1Data.length - 1];
-            const latestBuilding2 = building2Data[building2Data.length - 1];
+            const latestArea1 = area1Data[area1Data.length - 1];
+            const latestArea2 = area2Data[area2Data.length - 1];
 
             // Perbarui input berdasarkan data terbaru
-            updateInputs(latestBuilding1, latestBuilding2);
+            updateInputs(latestArea1, latestArea2);
         })
         .catch(error => console.error('Error fetching data:', error));
 }
@@ -144,17 +145,17 @@
 window.onload = updateData;
 
 // Fungsi untuk memperbarui kolom input berdasarkan data terbaru
-function updateInputs(building1Data, building2Data) {
-    const building1Input = document.getElementById('building1');
-    const building2Input = document.getElementById('building2');
+function updateInputs(area1Data, area2Data) {
+    const area1Input = document.getElementById('area1');
+    const area2Input = document.getElementById('area2');
     const totalInput = document.getElementById('total');
 
     // Set nilai untuk input field
-    building1Input.value = building1Data + " W";
-    building2Input.value = building2Data + " W";
+    area1Input.value = area1Data + " W";
+    area2Input.value = area2Data + " W";
 
     // Hitung total dan masukkan ke input total
-    const total = building1Data + building2Data;
+    const total = area1Data + area2Data;
     totalInput.value = total + " W";
 }
     </script>
