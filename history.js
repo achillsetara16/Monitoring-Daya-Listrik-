@@ -1,0 +1,3 @@
+new DataTable('#table-body', {
+    
+});
