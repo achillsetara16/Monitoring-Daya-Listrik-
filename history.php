@@ -9,6 +9,7 @@
 <head>
     <?php require 'metadata.php'; ?>
     <title>History</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
 </head>
 <body id="history">
     <?php require 'navbar.php'; ?>
@@ -18,27 +19,11 @@
         <p>HISTORY</p>
     </div>
     <div class="table-container">
-    <div class="table-controls">
-    <div class="entries-per-page">
-    <label for="entries">
-        <select id="entries">
-            <option value="10">10</option>
-            <option value="20" selected>20</option>
-            <option value="30">30</option>
-        </select>
-        entries per page
-        </label>
-    </div>
-    <div class="search-box">
-        <label for="search">Search:</label>
-        <input type="text" id="search">
-    </div>
-    </div>
-    <table>
+    
+    <table id="table-body">
         <thead>
         <tr>
             <th>No</th>
-            <th>Building</th>
             <th>Area</th>
             <th>Control <br>ON</th>
             <th> Control <br>OFF</th>
@@ -59,7 +44,6 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
                                 echo "<td>" . $no++ . "</td>";
-                                echo "<td>" . htmlspecialchars($row['building']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['area']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['control_on']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['control_off']) . "</td>";
@@ -69,25 +53,18 @@
                                 echo "</tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='8'>No data found.</td></tr>";
+                            echo "<tr><td colspan='7'No data found.</td></tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='8'>Failed to connect to database.</td></tr>";
+                        echo "<tr><td colspan='7'>Failed to connect to database.</td></tr>";
                     }
                     ?>
                 </tbody>
     </table>
-    <div class="pagination-control">
-    <p>Showing 1 to 20 of 32 entries</p>
-    <div class="pagination">
-                <a href="#">&lt;&lt;</a>
-                <a href="#">&lt;</a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">&gt;</a>
-                <a href="#">&gt;&gt;</a>
-            </div>
-            </div>
+    
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="history.js"></script>
 </body>
 </html>
