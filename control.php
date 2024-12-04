@@ -41,17 +41,7 @@
     </script>
 </head>
 <body class="control">
-    <nav>
-        <div class="logo">
-            <img src="image/logo.png" alt="Logo" />
-            <p>POWER MONITORING</p>
-        </div>
-        <ul>
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a class="active" href="control.php">Control</a></li>
-            <li><a href="history.php">History</a></li>
-        </ul>
-    </nav>
+    <?php require 'navbar.php'; ?>
     <!-- nanti diisi disni -->
     <div class="container">
         <!-- Area 1 -->
