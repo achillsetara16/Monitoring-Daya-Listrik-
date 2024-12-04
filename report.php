@@ -1,5 +1,5 @@
 <!-- Nama File: report.php -->
-<!-- Deskripsi: File ini menampilkan report pemakaian daya per gedung berdasarkan hari -->
+<!-- Deskripsi: File ini menampilkan report pemakaian daya per area berdasarkan hari -->
 <!-- Dibuat oleh: Elvan - NIM: 3312311004 -->
 <!-- Tanggal: 13 November 2024 -->
 
@@ -7,19 +7,19 @@
 
 require 'connect_mysql.php';
 
-$building = $_POST["building"];
+$area = $_POST["area"];
 $date_start = $_POST["date_start"];
 $date_end = $_POST["date_end"];
-$total_building = 1;
+$total_area = 1;
 
-if ($building == 0 || $date_start > $date_end) {
+if ($area == 0 || $date_start > $date_end) {
     echo "<script>
-            alert('Invalid input. Please check your building selection or date range.');
+            alert('Invalid input. Please check your area selection or date range.');
             window.location.href = 'dashboard.php';
         </script>";
     exit();
-} elseif ($building == "all") {
-    $total_building = 2;
+} elseif ($area == "all") {
+    $total_area = 2;
 }
 
 $datetime_start = $date_start . " 00:00:00";
@@ -67,11 +67,11 @@ $datetime_end = $date_end . " 23:59:59";
                 }
             }
 
-            for ($count = 1; $count <= $total_building; $count++) {
-                if ($total_building == 2) {
-                    $building_number = $count;
+            for ($count = 1; $count <= $total_area; $count++) {
+                if ($total_area == 2) {
+                    $area_number = $count;
                 } else {
-                    $building_number = $building;
+                    $area_number = $area;
                 }
 
                 $sql = "SELECT
@@ -81,7 +81,7 @@ $datetime_end = $date_end . " 23:59:59";
                         FROM
                             history
                         WHERE
-                            building = 'Building $building_number'
+                            area = 'Area $area_number'
                             AND
                             (
                                 start_time BETWEEN '$datetime_start' AND '$datetime_end'
@@ -96,9 +96,9 @@ $datetime_end = $date_end . " 23:59:59";
 
             ?>
 
-            <div class="building">
+            <div class="area">
                 <hr />
-                <h3 class="building-name">BUILDING <?= $building_number ?></h3>
+                <h3 class="area-name">AREA <?= $area_number ?></h3>
                 <table>
                     <colgroup>
                         <col width="40%" />
@@ -201,15 +201,15 @@ $datetime_end = $date_end . " 23:59:59";
     </div>
 
     <script>
-        document.querySelectorAll(".building").forEach(function (building) {
-            const height = building.getBoundingClientRect().height;
+        document.querySelectorAll(".area").forEach(function (area) {
+            const height = area.getBoundingClientRect().height;
 
-            const hr = building.querySelector("hr");
+            const hr = area.querySelector("hr");
             const hrHeight = hr.getBoundingClientRect().height;
             const hrStyle = window.getComputedStyle(hr);
             const hrMarginTop = parseFloat(hrStyle.marginTop);
 
-            const table = building.querySelector("table");
+            const table = area.querySelector("table");
             const tableStyle = window.getComputedStyle(table);
             const tableMarginTop = parseFloat(tableStyle.marginTop);
 
