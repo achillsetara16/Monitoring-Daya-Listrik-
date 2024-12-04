@@ -1,3 +1,4 @@
+/* General Styles */
 body {
   background-color: rgba(247, 244, 243, 0.5);
   margin: 0;
@@ -11,7 +12,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border-bottom: 2px solid #fdc600;
 }
 
 .logo {
@@ -20,14 +23,15 @@ nav {
 }
 
 .logo img {
-  width: 1rem;
+  width: 2rem;
+  height: auto;
 }
 
 .logo p {
   margin: 0 0 0 0.5rem;
   color: #fdc600;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 nav ul {
@@ -42,17 +46,19 @@ nav ul li a {
   color: #080708;
   padding: 0 1rem;
   font-weight: 500;
+  transition: color 0.3s ease-in-out;
 }
 
+nav ul li a:hover,
 nav ul li a.active {
   color: #fdc600;
   font-weight: bold;
 }
 
 /* Container for Areas */
-.control .container {
+.container {
   margin: 1rem auto;
-  padding: 0.5rem;
+  padding: 1rem;
   width: 90%;
   max-width: 1200px;
   background-color: white;
@@ -61,31 +67,31 @@ nav ul li a.active {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.control .area {
+.area {
   margin-bottom: 2rem;
 }
 
-.control .area h2 {
+.area h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #080708;
+  color: #fdc600;
 }
 
 /* Layout for Area Content */
-.control .content {
+.content {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
-.control .left {
+.left {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   gap: 1rem;
   flex-basis: 40%;
 }
 
-.control .btn {
+.btn {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
@@ -95,76 +101,64 @@ nav ul li a.active {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.control .btn.turn-on {
+.btn.turn-on {
   background-color: #32cd32; /* Green */
   color: white;
 }
 
-.control .btn.turn-on:hover {
-  background-color: #228f22;
-  color: #080708;
+.btn.turn-on:hover {
+  background-color: #228b22;
 }
 
-.control .btn.turn-off {
+.btn.turn-off {
   background-color: #ff6347; /* Red */
   color: white;
 }
 
-.control .btn.turn-off:hover {
+.btn.turn-off:hover {
   background-color: #cc2900;
 }
 
 /* Lamp States */
-
-.control #lamp-1-off, .control #lamp-1-on, .control #lamp-2-off, .control #lamp-2-on {
-  width: 20%;
+.lamp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid black;
 }
 
-.control .d-none{
-  display: none;
+.lamp.on {
+  background-color: #32cd32; /* Green for ON */
+}
+
+.lamp.off {
+  background-color: #ff6347; /* Red for OFF */
 }
 
 /* Divider */
-.control .divider {
-  width: 5px;
+.divider {
+  width: 2px;
   height: 150px;
   background-color: #fdc600;
   flex-shrink: 0;
 }
 
 /* Icons on the Right */
-.control .right {
+.right {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
 
-.control .right .icontower1 {
-  width: 180px;
+.right .icon {
+  width: 50px;
   height: auto;
 }
 
-.control .right .iconwarehouse1 {
-  width: 100px;
-  height: auto;
-}
-
-.control .right .icontower2 {
-  width: 180px;
-  height: auto;
-}
-
-.control .right .iconwarehouse2 {
-  width: 100px;
-  height: auto;
-}
-
-.control .electricity-line {
-  width: 190px; /* Adjust width as needed */
-  height: 50px; /* Adjust height as needed */
-  display: block;
-}
-
-.control .electricity-line .d-none {
-  display: none;
+.electricity-line {
+  width: 2px;
+  height: 50px;
+  background-color: #fdc600;
+  margin: 0 auto;
 }
