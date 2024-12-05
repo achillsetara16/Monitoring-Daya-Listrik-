@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pbl_sem3`
+-- Database: `power_monitoring`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `history` (
   `id` int(11) NOT NULL,
-  `building` varchar(20) NOT NULL,
   `area` varchar(20) NOT NULL,
   `control_on` enum('button','switch','sound') NOT NULL,
   `control_off` enum('button','switch','sound') NOT NULL,
@@ -42,19 +41,19 @@ CREATE TABLE `history` (
 -- Dumping data untuk tabel `history`
 --
 
-INSERT INTO `history` (`id`, `building`, `area`, `control_on`, `control_off`, `start_time`, `finish_time`, `power_consumed`) VALUES
-(1, 'Building 1', 'Area 1', 'button', 'switch', '2024-11-01 08:00:00', '2024-11-01 17:00:00', 135.00),
-(2, 'Building 1', 'Area 2', 'button', 'switch', '2024-11-01 08:00:10', '2024-11-01 17:01:10', 135.20),
-(3, 'Building 2', 'Area 1', 'button', 'sound', '2024-11-01 08:00:07', '2024-11-01 17:00:13', 135.10),
-(4, 'Building 2', 'Area 2', 'button', 'sound', '2024-11-01 08:00:15', '2024-11-01 17:00:13', 135.09),
-(5, 'Building 1', 'Area 1', 'switch', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
-(6, 'Building 1', 'Area 2', 'switch', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
-(7, 'Building 2', 'Area 1', 'sound', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
-(8, 'Building 2', 'Area 2', 'sound', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
-(9, 'Building 1', 'Area 1', 'button', 'sound', '2024-11-04 08:00:00', '2024-11-04 17:00:00', 135.00),
-(10, 'Building 1', 'Area 2', 'button', 'sound', '2024-11-04 08:00:00', '2024-11-04 17:00:00', 135.00),
-(11, 'Building 2', 'Area 1', 'switch', 'sound', '2024-11-04 08:00:00', '2024-11-04 17:00:00', 135.00),
-(12, 'Building 2', 'Area 2', 'switch', 'sound', '2024-11-04 08:00:00', '2024-11-05 08:00:00', 360.00);
+INSERT INTO `history` (`id`, `area`, `control_on`, `control_off`, `start_time`, `finish_time`, `power_consumed`) VALUES
+(1, 'Area 1', 'button', 'switch', '2024-11-01 08:00:00', '2024-11-01 17:00:00', 135.00),
+(2, 'Area 2', 'button', 'switch', '2024-11-01 08:00:10', '2024-11-01 17:01:10', 135.20),
+(3, 'Area 1', 'button', 'sound', '2024-11-01 08:00:07', '2024-11-01 17:00:13', 135.10),
+(4, 'Area 2', 'button', 'sound', '2024-11-01 08:00:15', '2024-11-01 17:00:13', 135.09),
+(5, 'Area 1', 'switch', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
+(6, 'Area 2', 'switch', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
+(7, 'Area 1', 'sound', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
+(8, 'Area 2', 'sound', 'button', '2024-11-02 08:00:10', '2024-11-02 17:01:10', 135.20),
+(9, 'Area 1', 'button', 'sound', '2024-11-04 08:00:00', '2024-11-04 17:00:00', 135.00),
+(10, 'Area 2', 'button', 'sound', '2024-11-04 08:00:00', '2024-11-04 17:00:00', 135.00),
+(11, 'Area 1', 'switch', 'sound', '2024-11-04 08:00:00', '2024-11-04 17:00:00', 135.00),
+(12, 'Area 2', 'switch', 'sound', '2024-11-04 08:00:00', '2024-11-05 08:00:00', 360.00);
 
 --
 -- Indexes for dumped tables

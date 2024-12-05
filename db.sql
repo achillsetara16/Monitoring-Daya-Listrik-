@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pbl_sem3`
+-- Database: `power_monitoring`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `history` (
   `id` int(11) NOT NULL,
-  `building` varchar(20) NOT NULL,
   `area` varchar(20) NOT NULL,
   `control_on` enum('button','switch','sound') NOT NULL,
   `control_off` enum('button','switch','sound') NOT NULL,

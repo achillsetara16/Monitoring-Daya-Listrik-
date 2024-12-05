@@ -3,7 +3,7 @@
 $serverName = "localhost";
 $username = "root";
 $password = "";
-$db = "pbl_sem3";
+$db = "power_monitoring";
 
 $connect = mysqli_connect($serverName, $username, $password, $db);
 
