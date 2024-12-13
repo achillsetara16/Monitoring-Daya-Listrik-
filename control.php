@@ -14,8 +14,8 @@
 
         client.on("connect", () => {
             console.log("Connect to MQTT Broker");
-            client.subscribe('area/1A');
-            client.subscribe('area/2A');
+            // client.subscribe('area/1A');
+            // client.subscribe('area/2A');
         });
 
         client.on("error", (err) => {
@@ -27,15 +27,15 @@
             console.log(topic, message);
 
             if (topic == 'area/1A') {
-                if (message == 'ON') {
+                if (message == 'ON1') {
                     this.lampOn(1);
-                } else if (message == 'OFF') {
+                } else if (message == 'OFF1') {
                     this.lampOff(1);
                 }
             } else if (topic == 'area/2A') {
-                if (message == 'ON') {
+                if (message == 'ON2') {
                     this.lampOn(2);
-                } else if (message == 'OFF') {
+                } else if (message == 'OFF2') {
                     this.lampOff(2);
                 }
             }
@@ -47,56 +47,57 @@
             const turnOnButton = document.querySelector(`#turn-on-${area}`);
             const turnOffButton = document.querySelector(`#turn-off-${area}`);
             const electricityLine = document.querySelector(`.electricity-line-${area}`); // Select electricity line for the area
-            const container = document.querySelector(`#area-${area}-container`); // Access the container
 
             if (isOn) {
                 client.publish(`area/${area}`, 'ON');
                 console.log(`Publishing message: ON to topic: area/${area}`);
-                container.style.borderColor = '#fdc600'; // Yellow
                 this.lampOn(area);
             } else {
                 client.publish(`area/${area}`, 'OFF');
                 console.log(`Publishing message: OFF to topic: area/${area}`);
-                container.style.borderColor = '#b2b6bd'; // Grey
                 this.lampOff(area);
             }
         }
 
         window.onload = function() {
-    // Menetapkan warna default ke tombol OFF dan ON pada saat pertama kali dimuat
-    const turnOnButton1 = document.querySelector('#turn-on-1');
-    const turnOffButton1 = document.querySelector('#turn-off-1');
-    
-    const turnOnButton2 = document.querySelector('#turn-on-2');
-    const turnOffButton2 = document.querySelector('#turn-off-2');
-    
-    // Setel warna tombol ke abu-abu ketika halaman dimuat
-    turnOnButton1.style.backgroundColor = '#cccccc';
-    turnOnButton1.style.color = 'black';
-    
-    turnOffButton1.style.backgroundColor = '#cccccc';
-    turnOffButton1.style.color = 'black';
+            // Menetapkan warna default ke tombol OFF dan ON pada saat pertama kali dimuat
+            const turnOnButton1 = document.querySelector('#turn-on-1');
+            const turnOffButton1 = document.querySelector('#turn-off-1');
+            
+            const turnOnButton2 = document.querySelector('#turn-on-2');
+            const turnOffButton2 = document.querySelector('#turn-off-2');
+            
+            // Setel warna tombol ke abu-abu ketika halaman dimuat
+            turnOnButton1.style.backgroundColor = '#cccccc';
+            turnOnButton1.style.color = 'black';
+            
+            turnOffButton1.style.backgroundColor = '#cccccc';
+            turnOffButton1.style.color = 'black';
 
-    turnOnButton2.style.backgroundColor = '#cccccc';
-    turnOnButton2.style.color = 'black';
+            turnOnButton2.style.backgroundColor = '#cccccc';
+            turnOnButton2.style.color = 'black';
 
-    turnOffButton2.style.backgroundColor = '#cccccc';
-    turnOffButton2.style.color = 'black';
+            turnOffButton2.style.backgroundColor = '#cccccc';
+            turnOffButton2.style.color = 'black';
 
-    // Set default border color for the containers to grey
-    const container1 = document.querySelector('#area-1-container');
+            // Set default border color for the containers to grey
+            const container1 = document.querySelector('#area-1-container');
             const container2 = document.querySelector('#area-2-container');
 
             container1.style.borderColor = '#b2b6bd';
             container2.style.borderColor = '#b2b6bd';
-};
 
-function lampOn(area) {
+            client.subscribe('area/1A');
+            client.subscribe('area/2A');
+        };
+
+        function lampOn(area) {
             const lampOn =document.querySelector(`#lamp-${area}-on`);
             const lampOff =document.querySelector(`#lamp-${area}-off`);
             const turnOnButton = document.querySelector(`#turn-on-${area}`);
             const turnOffButton = document.querySelector(`#turn-off-${area}`);
             const electricityLine = document.querySelector(`.electricity-line-${area}`); // Select electricity line for the area
+            const container = document.querySelector(`#area-${area}-container`); // Access the container
 
             // Toggle lamp state
             lampOff.classList.add('d-none');
@@ -107,6 +108,8 @@ function lampOn(area) {
             turnOnButton.style.color = 'white';
             turnOffButton.style.backgroundColor = '#cccccc'; // Grey
             turnOffButton.style.color = 'black';
+
+            container.style.borderColor = '#fdc600'; // Yellow
         }
 
         function lampOff(area) {
@@ -115,6 +118,7 @@ function lampOn(area) {
             const turnOnButton = document.querySelector(`#turn-on-${area}`);
             const turnOffButton = document.querySelector(`#turn-off-${area}`);
             const electricityLine = document.querySelector(`.electricity-line-${area}`); // Select electricity line for the area
+            const container = document.querySelector(`#area-${area}-container`); // Access the container
 
             // Toggle lamp state
             lampOff.classList.remove('d-none');
@@ -125,6 +129,8 @@ function lampOn(area) {
             turnOffButton.style.color = 'white';
             turnOnButton.style.backgroundColor = '#cccccc'; // Grey
             turnOnButton.style.color = 'black';
+
+            container.style.borderColor = '#b2b6bd'; // Grey
         }
 
     </script>
