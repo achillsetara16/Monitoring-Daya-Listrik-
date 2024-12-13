@@ -343,16 +343,17 @@ nav ul li a.active {
   background-color: #e6e6e6;
 }
 
-/* Container for Areas */
+/* Default border color */
 .control .container {
   margin: 1rem auto;
   padding: 0.5rem;
   width: 90%;
   max-width: 1200px;
   background-color: white;
-  border: 2px solid #fdc600;
+  border: 2px solid #b2b6bd; /* Default color grey */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
 }
 
 .control .area {
