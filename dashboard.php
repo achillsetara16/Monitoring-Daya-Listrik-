@@ -152,21 +152,92 @@
         .catch(error => console.error('Error fetching data:', error));
 }
 
-window.onload = updateData;
+window.onload = function() {
+    updateInputs();
+
+    setInterval(() => {
+        updateInputs();
+    }, 5000);
+
+    updateData();
+};
 
 // Fungsi untuk memperbarui kolom input berdasarkan data terbaru
-function updateInputs(area1Data, area2Data) {
+function updateInputs() {
+    // area1Data = 0;
+    // area2Data = 0;
+
+    // fetch('./area_power.php', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ area: 'Area 1' }),
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     area1Data = data.total;
+    // });
+
+    // fetch('./area_power.php', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ area: 'Area 2' }),
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     area2Data = data.total;
+    // });
+
+    // const area1Input = document.getElementById('area1');
+    // const area2Input = document.getElementById('area2');
+    // const totalInput = document.getElementById('total');
+
+    // // Set nilai untuk input field
+    // area1Input.value = area1Data + " Wh";
+    // area2Input.value = area2Data + " Wh";
+
+    // // Hitung total dan masukkan ke input total
+    // const total = area1Data + area2Data;
+    // totalInput.value = total + " Wh";
+    // console.log('aaaaaaaaaaaaaaaa', area1Data, area2Data);
+
+
     const area1Input = document.getElementById('area1');
     const area2Input = document.getElementById('area2');
     const totalInput = document.getElementById('total');
 
-    // Set nilai untuk input field
-    area1Input.value = area1Data + " W";
-    area2Input.value = area2Data + " W";
+    // Function to fetch data for a specific area
+    function fetchAreaData(area) {
+        return fetch('./area_power.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ area }),
+        })
+        .then(response => response.json())
+        .then(data => parseFloat(data.total)); // Ensure total is a number
+    }
 
-    // Hitung total dan masukkan ke input total
-    const total = area1Data + area2Data;
-    totalInput.value = total + " W";
+    // Fetch data for both areas and update inputs
+    Promise.all([fetchAreaData('Area 1'), fetchAreaData('Area 2')])
+        .then(([area1Data, area2Data]) => {
+            // Update input fields
+            area1Input.value = area1Data.toFixed(4) + " Wh";
+            area2Input.value = area2Data.toFixed(4) + " Wh";
+
+            // Calculate and update total
+            const total = area1Data + area2Data;
+            totalInput.value = total.toFixed(4) + " Wh";
+
+            console.log('Updated values:', { area1Data, area2Data, total });
+        })
+        .catch(error => {
+            console.error('Error fetching area data:', error);
+        });
 }
     </script>
 </body>

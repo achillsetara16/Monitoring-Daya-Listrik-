@@ -14,8 +14,6 @@
 
         client.on("connect", () => {
             console.log("Connect to MQTT Broker");
-            // client.subscribe('area/1A');
-            // client.subscribe('area/2A');
         });
 
         client.on("error", (err) => {
@@ -24,18 +22,20 @@
 
         client.on('message', (topic, message)=>{
             message = message.toString();
-            console.log(topic, message);
+            index = message.indexOf('-');
+            status = message.substring(0, index);
 
-            if (topic == 'area/1A') {
-                if (message == 'ON1') {
+            if (topic == 'area/1/iot') {
+                if (status == 'ON1') {
                     this.lampOn(1);
-                } else if (message == 'OFF1') {
+                } else if (status == 'OFF1') {
                     this.lampOff(1);
                 }
-            } else if (topic == 'area/2A') {
-                if (message == 'ON2') {
+            }
+            if (topic == 'area/2/iot') {
+                if (status == 'ON2') {
                     this.lampOn(2);
-                } else if (message == 'OFF2') {
+                } else if (status == 'OFF2') {
                     this.lampOff(2);
                 }
             }
@@ -49,12 +49,10 @@
             const electricityLine = document.querySelector(`.electricity-line-${area}`); // Select electricity line for the area
 
             if (isOn) {
-                client.publish(`area/${area}`, 'ON');
-                console.log(`Publishing message: ON to topic: area/${area}`);
+                client.publish(`area/${area}/web`, `ON${area}`);
                 this.lampOn(area);
             } else {
-                client.publish(`area/${area}`, 'OFF');
-                console.log(`Publishing message: OFF to topic: area/${area}`);
+                client.publish(`area/${area}/web`, `OFF${area}`);
                 this.lampOff(area);
             }
         }
@@ -87,8 +85,8 @@
             container1.style.borderColor = '#b2b6bd';
             container2.style.borderColor = '#b2b6bd';
 
-            client.subscribe('area/1A');
-            client.subscribe('area/2A');
+            client.subscribe("area/1/iot");
+            client.subscribe("area/2/iot");
         };
 
         function lampOn(area) {
@@ -154,7 +152,7 @@
                     <img src="image/tower.png" alt="Tower" class="icontower1">
                     <!-- <div class="electricity-line"></div> -->
                     <div class="electricity-line">
-                    <img src="image/dnoyd6rMvw29q-ezgif.com-speed.webp" class="electricity-line electricity-line-1 d-none">
+                    <img src="image/electric.webp" class="electricity-line electricity-line-1 d-none">
 </div>
                     <img src="image/warehouse.png" alt="Warehouse" class="iconwarehouse1">
                 </div>
@@ -177,7 +175,7 @@
                     <img src="image/tower.png" alt="Tower" class="icontower2">
                     <!-- <div class="electricity-line"></div> -->
                     <div class="electricity-line">
-                    <img src="image/dnoyd6rMvw29q-ezgif.com-speed.webp" class="electricity-line electricity-line-2 d-none">
+                    <img src="image/electric.webp" class="electricity-line electricity-line-2 d-none">
 </div>
                     <img src="image/warehouse.png" alt="Warehouse" class="iconwarehouse2">
                 </div>

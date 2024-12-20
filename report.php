@@ -171,7 +171,7 @@ $datetime_end = $date_end . " 23:59:59";
                         foreach ($report_datas as $report_data) {
                             echo "<tr>";
                             echo "<td>" . $report_data["date"] . "</td>";
-                            echo "<td>" . number_format($report_data["total_consumed"], 2) . " Wh</td>";
+                            echo "<td>" . number_format($report_data["total_consumed"], 4) . " Wh</td>";
                             echo "</tr>";
                         }
 
@@ -185,7 +185,7 @@ $datetime_end = $date_end . " 23:59:59";
                     <tfoot>
                         <tr>
                             <th align="left">Total Pemakaian</th>
-                            <th align="right"><?= $total_consumed > 10000 ? number_format(($total_consumed / 1000), 2) . " kWh" : number_format($total_consumed, 2) . " Wh" ?></th>
+                            <th align="right"><?= $total_consumed > 10000 ? number_format(($total_consumed / 1000), 2) . " kWh" : number_format($total_consumed, 4) . " Wh" ?></th>
                         </tr>
                     </tfoot>
                 </table>
