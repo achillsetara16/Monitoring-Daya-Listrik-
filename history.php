@@ -49,7 +49,7 @@
                                 echo "<td>" . htmlspecialchars($row['control_off']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['start_time']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['finish_time']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['power_consumed']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['power_consumed']) . " Wh</td>";
                                 echo "</tr>";
                             }
                         } else {
