@@ -15,12 +15,36 @@ $sql = "SELECT
             area = '$area' AND start_time >= '$start_time'
 ";
 
+$sql_2 = "SELECT
+            power_consumed
+        FROM
+            history
+        WHERE
+            area = '$area' AND control_off IS NULL
+        ORDER BY
+            id DESC
+        LIMIT
+            1
+";
+
 $result = mysqli_query($connect, $sql);
 $data = mysqli_fetch_assoc($result);
 
+$result_2 = mysqli_query($connect, $sql_2);
+
 $total = $data["total"];
 
+if (mysqli_num_rows($result_2) > 0) {
+    $data_2 = mysqli_fetch_assoc($result_2);
+    $power_consumed = $data_2["power_consumed"];
+} else {
+    $power_consumed = 0;
+}
+
 header("Content-Type: application/json");
-echo json_encode(["total" => number_format($total, 4)]);
+echo json_encode([
+    "total" => number_format($total, 4),
+    "power_consumed" => number_format($power_consumed, 4)
+]);
 
 ?>

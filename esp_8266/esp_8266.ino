@@ -4,7 +4,7 @@
 SoftwareSerial espSerial(D5, D6); // D5 = RX, D6 = TX
 
 const char SSID[] = "PBL IF-34";
-const char* serverIp = "10.170.2.8";
+const char* serverIp = "10.170.10.177";
 const int port = 1883;
 
 WiFiClient wifiClient;
