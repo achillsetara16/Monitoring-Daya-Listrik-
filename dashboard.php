@@ -154,62 +154,20 @@
         .catch(error => console.error('Error fetching data:', error));
 }
 
-window.onload = function() {
-    updateInputs();
+        window.onload = function() {
+            updateInputs();
 
-    setInterval(() => {
-        updateInputs();
-    }, 5000);
+            setInterval(() => {
+                updateInputs();
+            }, 5000);
 
-    updateData();
-};
+            updateData();
+        };
 
-// Fungsi untuk memperbarui kolom input berdasarkan data terbaru
-function updateInputs() {
-    // area1Data = 0;
-    // area2Data = 0;
-
-    // fetch('./area_power.php', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ area: 'Area 1' }),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     area1Data = data.total;
-    // });
-
-    // fetch('./area_power.php', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ area: 'Area 2' }),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     area2Data = data.total;
-    // });
-
-    // const area1Input = document.getElementById('area1');
-    // const area2Input = document.getElementById('area2');
-    // const totalInput = document.getElementById('total');
-
-    // // Set nilai untuk input field
-    // area1Input.value = area1Data + " Wh";
-    // area2Input.value = area2Data + " Wh";
-
-    // // Hitung total dan masukkan ke input total
-    // const total = area1Data + area2Data;
-    // totalInput.value = total + " Wh";
-    // console.log('aaaaaaaaaaaaaaaa', area1Data, area2Data);
-
-
-    const area1Input = document.getElementById('area1');
-    const area2Input = document.getElementById('area2');
-    const totalInput = document.getElementById('total');
+        function updateInputs() {
+            const area1Input = document.getElementById('area1');
+            const area2Input = document.getElementById('area2');
+            const totalInput = document.getElementById('total');
 
     // Function to fetch data for a specific area
     function fetchAreaData(area) {
@@ -221,34 +179,21 @@ function updateInputs() {
             body: JSON.stringify({ area }),
         })
         .then(response => response.json())
-        .then(data => [parseFloat(data.total), parseFloat(data.power_consumed)]); // Ensure total is a number
+        .then(data => parseFloat(data.total)); // Ensure total is a number
     }
 
     // Fetch data for both areas and update inputs
     Promise.all([fetchAreaData('Area 1'), fetchAreaData('Area 2')])
         .then(([area1Data, area2Data]) => {
             // Update input fields
-            area1Input.value = area1Data[0].toFixed(4) + " Wh";
-            area2Input.value = area2Data[0].toFixed(4) + " Wh";
+            area1Input.value = area1Data.toFixed(4) + " Wh";
+            area2Input.value = area2Data.toFixed(4) + " Wh";
 
             // Calculate and update total
-            const total = area1Data[0] + area2Data[0];
+            const total = area1Data + area2Data;
             totalInput.value = total.toFixed(4) + " Wh";
 
             console.log('Updated values:', { area1Data, area2Data, total });
-            // Update chart datasets
-            powerChart.data.labels.push(new Date().toLocaleTimeString()); // Add current time as label
-            powerChart.data.datasets[0].data.push(area1Data[1]); // Update Area 1 data
-            powerChart.data.datasets[1].data.push(area2Data[1]); // Update Area 2 data
-
-            // Keep only the last 10 data points (for a real-time effect)
-            // if (powerChart.data.labels.length > 10) {
-            //     powerChart.data.labels.shift();
-            //     powerChart.data.datasets[0].data.shift();
-            //     powerChart.data.datasets[1].data.shift();
-            // }
-            powerChart.update(); // Refresh the chart
-            console.log('Chart updated:', { area1Data, area2Data, total });
         })
         .catch(error => {
             console.error('Error fetching area data:', error);
