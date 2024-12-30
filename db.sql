@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Nov 2024 pada 14.27
+-- Waktu pembuatan: 30 Des 2024 pada 13.57
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -31,10 +31,10 @@ CREATE TABLE `history` (
   `id` int(11) NOT NULL,
   `area` varchar(20) NOT NULL,
   `control_on` enum('button','switch','sound') NOT NULL,
-  `control_off` enum('button','switch','sound') NOT NULL,
+  `control_off` enum('button','switch','sound') DEFAULT NULL,
   `start_time` datetime NOT NULL,
-  `finish_time` datetime NOT NULL,
-  `power_consumed` float(10,2) NOT NULL
+  `finish_time` datetime DEFAULT NULL,
+  `power_consumed` float(10,6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

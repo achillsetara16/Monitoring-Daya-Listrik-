@@ -7,7 +7,7 @@
     </div>
     <ul>
         <li><a class="<?= $currentPage == 'dashboard.php' ? 'active' : '' ?>" href="dashboard.php">Dashboard</a></li>
-        <li><a class="<?= $currentPage == 'control.php' ? 'active' : '' ?>" href="control.php">Control</a></li>
+        <li><a class="<?= $currentPage == 'index.php' ? 'active' : '' ?>" href="index.php">Control</a></li>
         <li><a class="<?= $currentPage == 'history.php' ? 'active' : '' ?>" href="history.php">History</a></li>
     </ul>
 </nav>

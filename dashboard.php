@@ -179,21 +179,33 @@
             body: JSON.stringify({ area }),
         })
         .then(response => response.json())
-        .then(data => parseFloat(data.total)); // Ensure total is a number
+        .then(data => [parseFloat(data.total), parseFloat(data.power_consumed)]); // Ensure total is a number
     }
 
     // Fetch data for both areas and update inputs
     Promise.all([fetchAreaData('Area 1'), fetchAreaData('Area 2')])
         .then(([area1Data, area2Data]) => {
             // Update input fields
-            area1Input.value = area1Data.toFixed(4) + " Wh";
-            area2Input.value = area2Data.toFixed(4) + " Wh";
+            area1Input.value = area1Data[0].toFixed(4) + " Wh";
+            area2Input.value = area2Data[0].toFixed(4) + " Wh";
 
             // Calculate and update total
-            const total = area1Data + area2Data;
+            const total = area1Data[0] + area2Data[0];
             totalInput.value = total.toFixed(4) + " Wh";
 
             console.log('Updated values:', { area1Data, area2Data, total });
+            // Update chart datasets
+            powerChart.data.labels.push(new Date().toLocaleTimeString()); // Add current time as label
+            powerChart.data.datasets[0].data.push(area1Data[1]); // Update Area 1 data
+            powerChart.data.datasets[1].data.push(area2Data[1]); // Update Area 2 data
+            // Keep only the last 10 data points (for a real-time effect)
+            // if (powerChart.data.labels.length > 10) {
+            //     powerChart.data.labels.shift();
+            //     powerChart.data.datasets[0].data.shift();
+            //     powerChart.data.datasets[1].data.shift();
+            // }
+            powerChart.update(); // Refresh the chart
+            console.log('Chart updated:', { area1Data, area2Data, total });
         })
         .catch(error => {
             console.error('Error fetching area data:', error);
