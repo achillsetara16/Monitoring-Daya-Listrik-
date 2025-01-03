@@ -1,3 +1,1 @@
-PBL IF-34 Project
-------------------------------
-Web based IoT for monitoring power used
+[Click me to enter to the website!] (https://achillsetara16.github.io/Monitoring-Daya-Listrik-/index.php)
